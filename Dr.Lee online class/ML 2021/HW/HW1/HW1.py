@@ -1,3 +1,6 @@
+# import some packages
+# start
+
 # PyTorch
 import torch
 import torch.nn as nn
@@ -19,8 +22,13 @@ np.random.seed(myseed)
 torch.manual_seed(myseed)
 if torch.cuda.is_available():
     torch.cuda.manual_seed_all(myseed)
+# end
 
 
+# some utilities
+# you do not need to modify this part
+
+# start
 def get_device():
     """Get device (if GPU is available, use GPU)"""
     return "cuda" if torch.cuda.is_available() else "cpu"
@@ -65,3 +73,6 @@ def plot_pred(dv_set, model, device, lim=35.0, preds=None, targets=None):
     plt.ylabel("predicted value")
     plt.title("Ground Truth v.s. Prediction")
     plt.show()
+
+
+# end
