@@ -79,7 +79,7 @@ if __name__ == "__main__":
     X = np.load("./features.npy")  # size: [5000, 512]
 
     # y = clustering(X, k=13, max_iters=20, random_state=13)
-    y = clustering_DBSCAN(X, eps=3.5, min_samples=11)  # DBSCAN 範例
+    y = clustering_DBSCAN(X, eps=3.64, min_samples=4)  # DBSCAN 範例
 
     # save clustered labels
     np.save("predicted_label.npy", y)  # output size should be [5000]
