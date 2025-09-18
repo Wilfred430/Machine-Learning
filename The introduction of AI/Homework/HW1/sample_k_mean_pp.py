@@ -1,30 +1,22 @@
-"""
-Example for loading data and saving predicted labels.
-You can only use python standard library and numpy.
-Do not use any other libraries.
-"""
-# import argparse
 import numpy as np
-# from clustering_algos import clustering_k_mean  # 匯入你的 k-means++ 或 DBSCAN 函數
-from DBSCAN_algos import clustering_DBSCAN  # 匯入你的 k-means++ 或 DBSCAN 函數
+import argparse
+from Kpp_algos import clustering_k_mean
 
 if __name__ == "__main__":
     # load data
     X = np.load("./features.npy")  # size: [5000, 512]
 
     # y = clustering(X, k=13, max_iters=20, random_state=13)
-    y = clustering_DBSCAN(X, eps=3.64, min_samples=4)  # DBSCAN 範例
+    y = clustering_k_mean(X, k=13, max_iters=300, tol=1e-6, random_state=0)  # DBSCAN 範例
 
     # save clustered labels
     np.save("predicted_label.npy", y)  # output size should be [5000]
-
+    
 # if __name__ == "__main__":
 #     parser = argparse.ArgumentParser()
 #     parser.add_argument("--seed", type=int, default=None, help="Random seed for clustering")
 #     args = parser.parse_args()
 
 #     X = np.load("features.npy")
-#     labels = clustering(X, k=8, random_state=args.seed)  # k-means++ 範例
+#     labels = clustering_k_mean(X, k=13, random_state=args.seed)  # k-means++ 範例
 #     np.save("predicted_label.npy", labels)
-
-
